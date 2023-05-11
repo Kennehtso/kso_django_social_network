@@ -1,0 +1,9 @@
+[
+    {
+        "model":"helloworld.Hello",
+        "pk":1,
+        "fields" : {
+            "text" : "Hello Ken"
+        }
+    }
+]
