@@ -1,0 +1,8 @@
+{% extends "common/base.html" %}
+{% block content %}
+    <p>Name is : {{ name|upper }}</p>
+    <p>Address is : {{ address }}</p>
+    {% if True %}
+        Hello is True
+    {% endif %}
+{% endblock %}
