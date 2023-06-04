@@ -15,7 +15,7 @@ class Sequencing(models.Model):
         return self.factory_location
    
 class Gene(models.Model):
-    gene_id = models.CharField(max_length=256, null=False, blank=False)
+    gene_id = models.CharField(max_length=256, null=False, blank=False, db_index=True)
     entity = models.CharField(max_length=256, null=False, blank=False)
     start = models.IntegerField(null=False, blank=True)
     stop = models.IntegerField(null=False, blank=True)
