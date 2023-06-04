@@ -1,0 +1,21 @@
+<html>
+  <head></head>
+  <body>
+    <h1>D.Bucha Genes</h1>
+    <table>
+      <tr>
+        <th>Gene ID</th>
+      </tr>
+      {% for gene in genes %}
+        <tr>
+          <td>
+            <a href="/gene/{{ gene.pk }}">{{ gene }}</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <br/>
+    <h2>Show Positive Chromosome</h2>
+    <a href="/poslist/">Show This List</a>
+  </body>
+</html>
