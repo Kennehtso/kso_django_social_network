@@ -49,7 +49,7 @@
     1. install with:
         - pip3 install virtualenvwrapper-win (more function then venv)
     2. Create a venv:
-        - mkvirtuialenv -p C:\Python310\python.exe advanced_web_dev
+        - mkvirtualenv -p C:\Python310\python.exe advanced_web_dev
     3. Activate the venv
         - workon advanced_web_dev
     4. once success, you will see a bracket in front of cmd (advanced_web_dev)
