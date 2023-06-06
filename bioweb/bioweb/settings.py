@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['127.0.0.1','localhost',]
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'bootstrap4',
     'genedata.apps.GenedataConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
