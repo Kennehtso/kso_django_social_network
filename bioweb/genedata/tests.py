@@ -9,6 +9,33 @@ from rest_framework.test import APITestCase
 from .model_factories import *
 from .serializers import *
 
+class GeneSerialiserTest(APITestCase):
+    gene1 = None
+    geneserializer = None
+
+    def setUp(self):
+        self.gene1 = GeneFactory.create(pk=1, gene_id="gene1")
+        self.geneserializer = GeneSerializer(instance=self.gene1)
+
+    def tearDown(self):
+        EC.objects.all().delete()
+        Sequencing.objects.all().delete()
+        Gene.objects.all().delete()
+        ECFactory.reset_sequence(0)
+        SequencingFactory.reset_sequence(0)
+        GeneFactory.reset_sequence(0)
+    
+    def test_genSerializer(self):
+        data = self.geneserializer.data
+        self.assertEqual(set(data.keys()), set(['gene_id', 'sequencing',
+                                        'sense', 'start', 'stop',
+                                        'entity', 'ec',
+                                        'start_codon']))
+	
+
+    def test_geneSerilaiserGeneIDIsHasCorrectData(self):
+        data = self.geneserializer.data
+        self.assertEqual(data['gene_id'], "gene1")
 
 class GeneTest(APITestCase):
     gene1 = None
