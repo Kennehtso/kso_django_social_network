@@ -13,6 +13,8 @@ urlpatterns = [
     path('update/<int:pk>', views.GeneUpdate.as_view(), name='update'),
     # path('api/gene/<int:pk>/update', api.gene_update),
     # path('api/gene/<int:pk>/delete', api.gene_delete),
-    path('api/gene/<int:pk>', api.gene_detail), # also handle GET, DELETE
-    path('api/genes', api.gene_list),
+    path('api/genes', api.gene_list, name='genes_api'),
+    path('api/gene/<int:pk>', api.gene_detail, name='gene_api'), # also handle GET, DELETE
+
+    
 ]
