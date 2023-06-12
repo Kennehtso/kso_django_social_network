@@ -15,12 +15,15 @@ class GeneTest(APITestCase):
     gene2 = None
     good_url = ''
     bad_url = ''
+    delete_url = ''
 
     def setUp(self):
         self.gene1 = GeneFactory.create(pk=1, gene_id="gene1")
         self.gene1 = GeneFactory.create(pk=2, gene_id="gene2")
+        self.gene3 = GeneFactory.create(pk=3, gene_id="gene3")
         self.good_url = reverse('gene_api', kwargs={'pk': 1})
         self.bad_url = "/api/gene/H/"
+        self.delete_url = reverse('gene_api', kwargs={'pk': 3})
 
     def tearDown(self):
         EC.objects.all().delete()
@@ -41,6 +44,11 @@ class GeneTest(APITestCase):
     def test_geneDetailReturnFailOnBadPk(self):
         response = self.client.get(self.bad_url, format='json')
         self.assertEqual(response.status_code, 404)
+        
+    def test_geneDetailDeleteIsSuccessful(self):
+        response = self.client.delete(self.delete_url, format='json')
+        self.assertEqual(response.status_code, 204)
+
     """
     def test_geneDetailReturnsSuccess(self):
         gene = GeneFactory.create(pk=1, gene_id="gene1")
