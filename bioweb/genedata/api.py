@@ -5,9 +5,13 @@ from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
+from rest_framework import mixins
+
 from .models import *
 from .serializers import *
 
+"""
 @api_view(['GET', 'POST'])
 def gene_detail(request, pk):
     if request.method == 'POST':
@@ -31,8 +35,30 @@ def gene_detail(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
+"""
+class GeneDetails(mixins.CreateModelMixin,
+                 mixins.RetrieveModelMixin,
+                 mixins.UpdateModelMixin,
+                 mixins.DestroyModelMixin,
+                 generics.GenericAPIView):
+    queryset = Gene.objects.all()
+    serializer_class = GeneSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+"""
 @api_view(['GET'])
 def gene_list(request):
     try:
@@ -42,6 +68,11 @@ def gene_list(request):
     if request.method == 'GET':
         serializer = GeneListSerializer(genes, many=True)
         return Response(serializer.data)
+"""
+class GeneList(generics.ListAPIView):
+    queryset = Gene.objects.all()
+    serializer_class = GeneListSerializer
+    
 """
 @api_view(['PUT'])
 def gene_update(request, pk):
