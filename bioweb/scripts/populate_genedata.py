@@ -4,12 +4,14 @@ import django
 import csv
 from collections import defaultdict
 
-sys.path.append("C:/Users/kenne/Documents/Coding/KSO_University_Of_London/CM3035-01_2022_2023_AWD/kso_django_social_network/bioweb")
+sys.path.append("C:/Users/Admin/Documents/TO_Ken/Personal_Project/kso_django_social_network/bioweb")
+# sys.path.append("C:/Users/kenne/Documents/Coding/KSO_University_Of_London/CM3035-01_2022_2023_AWD/kso_django_social_network/bioweb")
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bioweb.settings')
 
 django.setup()
 from genedata.models import *
-data_file = 'C:/Users/kenne/Documents/Coding/KSO_University_Of_London/CM3035-01_2022_2023_AWD/kso_django_social_network/bioweb/CSV/cae_example_data_to_load.csv'
+data_file = 'C:/Users/Admin/Documents/TO_Ken/Personal_Project/kso_django_social_network/bioweb/CSV/cae_example_data_to_load.csv'
+# data_file = 'C:/Users/kenne/Documents/Coding/KSO_University_Of_London/CM3035-01_2022_2023_AWD/kso_django_social_network/bioweb/CSV/cae_example_data_to_load.csv'
 
 genes = defaultdict(list)
 sequencing = set()
