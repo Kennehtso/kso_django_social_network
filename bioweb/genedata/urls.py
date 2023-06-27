@@ -15,6 +15,7 @@ urlpatterns = [
     # path('api/gene/<int:pk>/delete', api.gene_delete),
     path('api/genes', api.GeneList.as_view(), name='genes_api'),
     path('api/gene/<int:pk>', api.GeneDetails.as_view(), name='gene_api'), # also handle GET, DELETE
+    path('app/', views.SPA, name="spa"),
 
     
 ]

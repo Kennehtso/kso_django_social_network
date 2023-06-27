@@ -39,4 +39,4 @@ class GeneSerializer(serializers.ModelSerializer):
 class GeneListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gene
-        fields = ['gene_id', 'entity', 'start', 'stop', 'sense', 'start_codon']
+        fields = ['id', 'gene_id', 'entity', 'start', 'stop', 'sense', 'start_codon']
